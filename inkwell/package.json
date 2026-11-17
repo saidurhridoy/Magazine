@@ -1,0 +1,40 @@
+{
+  "name": "inkwell",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "ইঙ্কওয়েল / Inkwell — a Bangladeshi magazine newsstand & publishing studio",
+  "scripts": {
+    "dev": "node scripts/ensure-build.js && node server/index.js",
+    "start": "node scripts/ensure-build.js && node server/index.js",
+    "build": "vite build",
+    "seed": "node server/seed.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@fontsource/noto-sans": "^5.3.0",
+    "@fontsource/noto-sans-bengali": "^5.3.0",
+    "@fontsource/noto-serif": "^5.3.0",
+    "@fontsource/noto-serif-bengali": "^5.3.0",
+    "bcryptjs": "^3.0.3",
+    "better-sqlite3": "^13.2.0",
+    "cookie-parser": "^1.4.7",
+    "express": "^4.22.3",
+    "jsonwebtoken": "^9.0.3",
+    "lucide-react": "^1.74.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.30.6",
+    "recharts": "^3.11.0",
+    "sharp": "^0.35.5"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.7.0",
+    "autoprefixer": "^10.6.2",
+    "postcss": "^8.5.33",
+    "tailwindcss": "^3.4.19",
+    "vite": "^5.4.21"
+  }
+}

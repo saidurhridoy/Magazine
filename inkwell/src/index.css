@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { -webkit-text-size-adjust: 100%; }
+  body { @apply bg-paper text-ink font-sans antialiased; }
+  :lang(bn) { line-height: 1.7; }
+  ::selection { background: #cfe7de; }
+  :focus-visible { outline: 2px solid #006a4e; outline-offset: 2px; border-radius: 4px; }
+  input, textarea, select { @apply text-ink; }
+}
+
+@layer components {
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition
+    disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap; }
+  .btn-primary { @apply btn bg-delta text-white hover:bg-delta-700 shadow-sm; }
+  .btn-dark { @apply btn bg-ink text-paper hover:bg-ink-600; }
+  .btn-ghost { @apply btn text-ink-600 hover:bg-paper-200; }
+  .btn-outline { @apply btn border border-paper-300 bg-white text-ink hover:border-ink-300; }
+  .btn-danger { @apply btn bg-sun text-white hover:bg-sun-600; }
+  .btn-sm { @apply px-3 py-1.5 text-xs; }
+  .card { @apply rounded-2xl border border-paper-200 bg-white shadow-card; }
+  .input { @apply w-full rounded-xl border border-paper-300 bg-white px-3.5 py-2.5 text-sm placeholder:text-ink-300
+    focus:border-delta focus:outline-none focus:ring-2 focus:ring-delta/15; }
+  .label { @apply mb-1.5 block text-xs font-semibold uppercase tracking-wider text-ink-400; }
+  .chip { @apply inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-[11px] font-semibold; }
+  .eyebrow { @apply text-[11px] font-semibold uppercase tracking-[0.16em] text-ink-400; }
+  /* Letter-spacing pulls Bengali conjuncts apart; keep it tight in bn. */
+  :lang(bn) .eyebrow, .eyebrow:lang(bn) { @apply text-xs normal-case tracking-normal; }
+  :lang(bn) .label { @apply text-[13px] normal-case tracking-normal; }
+  .skeleton { @apply relative overflow-hidden rounded-lg bg-paper-200; }
+  .skeleton::after { content: ''; @apply absolute inset-0 -translate-x-full;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,.55), transparent); animation: shimmer 1.4s infinite; }
+}
+
+/* Long-form reading */
+.reading { font-family: "Noto Serif", "Noto Serif Bengali", Georgia, serif; color: #292524; }
+.reading p { margin: 0 0 1.25em; }
+.reading:lang(bn) { font-family: "Noto Serif Bengali", "Noto Serif", serif; line-height: 1.95; }
+/* Latin drop cap only — a floated first letter would split Bengali conjunct clusters. */
+.reading.dropcap:lang(en) > p:first-child::first-letter {
+  float: left; font-size: 3.6em; line-height: .9; padding: .06em .1em 0 0; font-weight: 700; color: #006a4e;
+}
+.reading.dropcap:lang(bn) > p:first-child { font-size: 1.08em; }
+
+.scrollbar-none { scrollbar-width: none; }
+.scrollbar-none::-webkit-scrollbar { display: none; }
+
+@keyframes shimmer { 100% { transform: translateX(100%); } }
